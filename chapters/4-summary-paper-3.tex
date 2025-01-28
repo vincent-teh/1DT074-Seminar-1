@@ -1,3 +1,25 @@
 \section{Summary Paper 3}%
 \label{sec:Summary Paper 3}
+The Internet Engineering Task Force (IETF) has released new standardizations on top of QUIC v1 in the form of extensions and the use of QUIC as a substrate protocol.
+
+Among the examples of QUIC extensions is the \textbf{Unreliable Datagram Extension}, which allows QUIC to handle unreliable datagrams, enhancing use cases where reliability is not a strict requirement. 
+Another notable extension is \textbf{QUIC-LB}, which enables QUIC to maintain its connection ID during network migrations, thereby preserving connection continuity. 
+Additionally, the \textbf{Multipath Extension for QUIC} allows QUIC to preserve its single-path semantics while simultaneously utilizing multiple paths for a single connection. 
+Furthermore, \textbf{Greasing the QUIC bit} is an essential feature designed to randomize the QUIC bit used to identify the protocol, ensuring that endpoints can still identify received packets as QUIC packets. 
+This feature is fundamental to preventing ossification, which has irreversibly affected TCP. 
+Lastly, the \textbf{Sender Control of Acknowledgement Delay} feature allows the sender to control the delay of acknowledgment commands, reducing CPU load and improving performance.
+
+Additionally, MASQUE plays a critical role in enabling proxy mechanisms for the QUIC protocol. 
+MASQUE uses QUIC as a substrate protocol and addresses censorship issues by ensuring tunneled data is indistinguishable from conventional encrypted HTTP connections. 
+Furthermore, the \textbf{CONNECT-UDP} method was proposed to mimic the TCP-only HTTP CONNECT method, enabling UDP-based tunneling. 
+Building on this, \textbf{QUIC-Aware Proxying using CONNECT-UDP} was introduced to allow the proxying of arbitrary QUIC connections.
+
+Beyond MASQUE, several other transport protocols utilize QUIC as a substrate protocol. 
+For instance, \textbf{WebTransport} is an Application Programming Interface (API) developed by the IETF to integrate HTTP with QUIC, laying the foundation for further protocols. 
+Specifically, \textbf{Http2Transport} and \textbf{Http3Transport} enable WebTransport peers to multiplex bidirectional data streams over HTTP/2 and HTTP/3 connections, respectively. 
+In addition to the existing features of Http2Transport, Http3Transport introduces capabilities aimed at eliminating head-of-line (HOL) blocking. 
+Lastly, \textbf{QuicTransport} is a minimalistic transport protocol that maps QUIC to arbitrary counterparts when applicable, focusing on maintaining low overhead and complexity.
+
+In summary, QUIC was established to address the ossification of TCP by cleverly utilizing UDP as a substrate protocol to maximize compatibility. 
+Over the years, the IETF has made significant efforts to expand QUIC's adoption and ensure its continued relevance.
 
