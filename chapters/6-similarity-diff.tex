@@ -1,3 +1,9 @@
-\section{Key Similarities}%
-\label{sec:Key Similarities}
+\section{Similarities and Differences}%
+\label{sec:Similarities and Differences}
+As already mentioned, the main similarity in these three papers is the topic of ossification and inflexibility of the transport layer, leading to difficulties in further development and global deployment of new technologies. \\
+Papers one and two both propose a solution to this issue, though with different approaches. Paper three tries to provide a summary of the recent technologies and Standardization efforts discussing its effect on future solutions.\\
+We discuss most similarities in chapter \ref{sec:Key Insights from the Papers}, the rest of this chapter will thus focus on their differences.\\
+The first paper focuses on presenting a whole new internet protocol design and implementation in QUIC, mentioning a lot of the underlying issues leading to a necessity of a new protocol but having the protocol itself as the forefront of the paper.\\
+In contrast the second paper pushes the idea of the trasport layer ossification problem, presenting it as the main issue and propsing a solution in their New, Evolutive API and Transport-layer architecture design. NEAT differs to the paper one QUIC solution in the scale it is trying to handle the problem in. QUIC builds on top of UDP to create a more flexible solution, NEAT creates a complete user module with its own API trying to allow users and applications to use the existing (TCP, UDP, SCTP, Minion,...) and yet to be developed trasport protocols \cite{grinnemo2016towards} according to their transport service needs, thus introducing flexibility to an ossified structure where these protocols did not get to global deployment. One more difference with these papers we would like to point out, is the lack of solution limitations and downsides mentioned in paper two, even though paper one mentioned them quite late, they were still present.
+Paper three focuses less on a presenting a thorough design of a new solution but rather introduces multiple new extensions and plugins resulting from the recent standardization of QUIC, namely MASQUE and WebTransport \cite{kosek2021beyond}. As this paper is the most recent of the three, it also discusses how these solutions interact with the most recent HTTP version HTTP/3.
 
