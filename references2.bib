@@ -9,3 +9,35 @@
   keywords={Scalability;Microservice architectures;Computer architecture;Containers;Benchmark testing;Software;Internet of Things;Reliability;Surges;Edge computing;Benchmarking;Constrained Devices;Containers;Device Virtualization;Edge Computing;Internet of Things (IoT);Kubernetes;Orchestration;Testbed},
   doi={10.1109/SEC62691.2024.00032}}
 
+
+@inproceedings{C2,
+author = {Jeffery, Andrew and Howard, Heidi and Mortier, Richard},
+title = {Rearchitecting Kubernetes for the Edge},
+year = {2021},
+isbn = {9781450382915},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3434770.3459730},
+doi = {10.1145/3434770.3459730},
+abstract = {Recent years have seen Kubernetes emerge as a primary choice for container orchestration. Kubernetes largely targets the cloud environment but new use cases require performant, available and scalable orchestration at the edge. Kubernetes stores all cluster state in etcd, a strongly consistent key-value store. We find that at larger etcd cluster sizes, offering higher availability, write request latency significantly increases and throughput decreases similarly. Coupled with approximately 30\% of Kubernetes requests being writes, this directly impacts the request latency and availability of Kubernetes, reducing its suitability for the edge. We revisit the requirement of strong consistency and propose an eventually consistent approach instead. This enables higher performance, availability and scalability whilst still supporting the broad needs of Kubernetes. This aims to make Kubernetes much more suitable for performance-critical, dynamically-scaled edge solutions.},
+booktitle = {Proceedings of the 4th International Workshop on Edge Systems, Analytics and Networking},
+pages = {7–12},
+numpages = {6},
+keywords = {CRDTs, Kubernetes, edge, eventual consistency, orchestration},
+location = {Online, United Kingdom},
+series = {EdgeSys '21}
+}
+
+@INPROCEEDINGS{C1,
+  author={Qi, Shixiong and Kulkarni, Sameer G and Ramakrishnan, K. K.},
+  booktitle={2020 IEEE International Symposium on Local and Metropolitan Area Networks (LANMAN}, 
+  title={Understanding Container Network Interface Plugins: Design Considerations and Performance}, 
+  year={2020},
+  volume={},
+  number={},
+  pages={1-6},
+  keywords={Containers;IP networks;Bridges;Routing;Weaving;Protocols;Linux;Kubernetes;Container network interface;Performance},
+  doi={10.1109/LANMAN49260.2020.9153266}}
+
+
+
