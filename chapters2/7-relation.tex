@@ -1,2 +1,6 @@
 \section{Relation to the Course}%
 \label{sec:Relation to the Course}
+
+Papers \cite{C1} and \cite{C3} both rely on \textbf{simulation techniques} to measure different parameters such as resource usage, throughput and latency in order to conduct benchmarks for \textbf{performance analysis}. In particular, paper \cite{C1} measures the impact of different networking stacks on packet delay, which can be useful when modeling TCP performance in \texttt{ns3} simulations (\textit{Lab 1}) since packet delay influences RTT estimations which in turn affects TCP's congestion control and throughput. Paper \cite{C1} also examines how containerized applications handle packet forwarding, which could help optimizing the UDP XPong game (\textit{Lab 2}) for low-latency performance. 
+By evaluating containerized networking overheads, paper \cite{C3} might be useful to chose the best settings for TCP and UDP simulations in constrained environments. 
+Paper \cite{C2} highlights \texttt{etcd}'s critical role in Kubernetes for handling high request volumes, aligning with \textbf{queuing theory} principles as \texttt{etcd} operations can be viewed as tasks in a queue, experiencing delays based on system load.
