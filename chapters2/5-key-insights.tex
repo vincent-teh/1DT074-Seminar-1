@@ -17,7 +17,7 @@ On the other hand, the latency of the read latency remained relatively low.
 To overcome the bottleneck, the author suggested implementing an eventually consistent datastore instead via the conflict-free replicated datatypes (CRDTs).
 Unfortunately, the author did highlight if conflict did happen, the Kubernetes controllers will have to decide and perform the conflict merging.
 Nevertheless, a native horizontal autoscalar that optimizes the resources usage of the datastore may also be feasible via the transition towards an eventual consistent datastore.
-In summary, a decentralised and eventual consistent store designed for Kubernetes will mitigate the bottleneck.
+In summary, a decentralized and eventual consistent store designed for Kubernetes will mitigate the bottleneck.
 
 
 
@@ -32,6 +32,10 @@ In summary, a decentralised and eventual consistent store designed for Kubernete
 
 \subsection{Paper 3}%
 \label{sub:Paper 3}
-
-
+Based on the study, k3s had emerged as the most efficient light-weight Container Orchestration Distribution (COD) among other 3 alternatives.
+Interestingly, despite k3s showed the lowest latency and highest throughput at 64 pods, Microshift and Microk8s had better performance when the deployment counts were lower than 16.
+This insight may suggest the user to consider the scale of the deployment as part of their selection process, as mentioned by the author.
+Further, the conclusion was made based on the assumption that the memory is the most paramount parameter in measuring the resource utilization score as the study focuses on light-weight IoT application where the memory resources are scarce.
+The author also emphasized the flexibility of the developed evaluation model by tuning the weight of the different parameters.
+The model combines resource utilization, control-plane deployment API and objects latency, allowing different study groups to emphasize certain property over another.
 

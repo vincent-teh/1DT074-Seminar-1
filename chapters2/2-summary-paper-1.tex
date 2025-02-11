@@ -1,5 +1,6 @@
 \section{Summary Paper 1}%
 \label{sec:Summary Paper 1}
+<<<<<<< HEAD
 The paper recognizes an issue in the amount of different Container Network Interface plugins and the lack of their  proper in depth performance comparison under experimental testing.
 As presented, most popular plugins are: \textit{Flannel}, \textit{Cilium}, \textit{Calico}, and \textit{Kube-router}.\\
 The paper then moves onto performing both qualitative and quantitative analises of these plugins:
@@ -9,3 +10,16 @@ the paper shows that all plugin performances are heavily dependent on the amount
 Lastly, the paper looks at the so called pod "cold-start" time. A "Pod" is the atomic unit of deployment in Kubernetes \cite{C1} and starting one from scratch can take a lot of time.
 This time varies dependent on which plugin the user is using, after their testing, the authors point to \textit{Kube-router} being the fastest with the average Pod Launch Time of just under 1.5 seconds \cite{C1}.\\
 In coclusion, the authors make it clear there is no single universally best CNI plugin, however depending on the CNIs focus, there might be a clear pick. Focusing on intra-host container communication, \textit{Cilium} appears to have the best performance, while \textit{Kube-router} and \textit{Calico} seem to be the best choice in the inter-host communication department because of higher cluster security provided by Netfilter.\\Even though the paper is clearly very detailed and high in information value, its structure and section division is very chaotic making it very hard to read, especially because vast reader knowledge is assumed by the author.
+=======
+The paper \cite{C1} seeks to address the issue of the vast number of different \emph{Container Network Interface (CNI) plugins} and the lack of their proper in-depth performance comparisons under experimental testing, making it hard to choose a CNI. The authors present the most popular CNI plugins: \textit{Flannel}, \textit{Cilium}, \textit{Calico}, and \textit{Kube-router}. The paper moves onto performing both qualitative and quantitative analyses of these plugins.
+
+The \textbf{qualitative plugin analysis} describes main design differences of each plugin. They fall into one of four categories: L3+Overlay, L3+Underlay, Hybrid+Overlay, and Hybrid+Underlay. This is based on which networking layer and kernel network configuration a plugin uses. This analysis also identifies the number of context switching each specific design needs to do, with Flannel and Weave needing three in UDP mode, while the others only need one.
+
+The \textbf{quantitative analysis} is based on setting up intra-host and inter-host experiments and measuring the plugins' overall performance, as well as breaking down their required overhead. To summarize the results, in intra-host testing, \textit{Cilium} outperforms the other alternatives in TCP throughput with \textit{Calico-wp} showing the worst round-trip latency results. In the overhead breakdown the authors explain these results, explaining that \textit{Cilium} uses eBPF rather than Netfilter, which proves to be much cheaper for intra-host communication. In inter-host testing, the paper shows that all plugin performances are heavily dependent on the amount of Netfilter calls performed, thus the user should aim to remove unnecessary iptables and implement caching, and rules to reduce the Netfilter overhead.
+
+Lastly, the paper looks at the pod cold-start time. Starting a Kubernetes pod from scratch can take a lot of time (handfuls of seconds), and this time varies depending on which CNI plugin is in use. After testing, the authors point to \textit{Kube-router} being the fastest with the average pod launch time of just under 1.5 seconds \cite{C1}.
+
+In the conclusion section of the paper, the authors make it clear there is \emph{no single universally best CNI plugin}. However, depending on the user's needs, there might be a clear best pick for their use case. Focusing on intra-host container communication, \textit{Cilium} appears to have the best performance, while \textit{Kube-router} and \textit{Calico} seem to be good choices in the inter-host communication department because of higher cluster security provided by Netfilter.
+
+Even though the paper is very detailed and high in information value, its structure and section division is very chaotic making it difficult to read. In addition, the paper is clearly written with peer professionals in mind because vast knowledge of the field is assumed by the authors.
+>>>>>>> 502cedf3daaa25e5f09d8049e12e23469eaa1403
