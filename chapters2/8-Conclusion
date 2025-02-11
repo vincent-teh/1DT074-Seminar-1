@@ -1,0 +1,8 @@
+\section{Conclusion}%
+\label{sec:Conclusion}%
+
+In conclusion, the three papers provide valuable insights into Kubernetes optimizations, focusing on networking, storage, and orchestration in containerized environments.
+The first paper highlights the performance trade-offs among CNI plugins, emphasizing the impact of kernel-level networking choices on latency and efficiency.
+The second paper addresses etcd’s strong consistency as a scalability bottleneck in Kubernetes, proposing an eventually consistent CRDT-based approach to enhance performance, particularly in edge deployments.
+The third paper evaluates lightweight CODs, offering a comparative analysis of their resource efficiency and control-plane performance.
+Together, these studies contribute to a deeper understanding of Kubernetes' limitations and potential improvements.
