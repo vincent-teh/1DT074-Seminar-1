@@ -2,9 +2,9 @@
 \label{sec:Key Insights}
 \subsection{Paper 1}%
 \label{sub:Paper 1}
-The authors studied three key impacts of the type of CNI plugin used, including intra-host communication, inter-host communication, and pod launch time.  
+The authors \cite{C1} studied three key impacts of the type of CNI plugin used, including intra-host communication, inter-host communication, and pod launch time.  
 The study uses Linux \texttt{perf} to further break down the time consumed by each operation of the CNI plugins.  
-Netfilter, a framework inside the Linux kernel that allows kernel modules to register callback functions at distinct locations of the Linux network stack, accounts for the largest overhead in both intra-host and inter-host communication.  
+Netfilter, a framework inside the Linux kernel that allows kernel modules to register callback functions at distinct locations of the Linux network stack \cite{netfilter2025}, accounts for the largest overhead in both intra-host and inter-host communication.  
 Hence, Cilium, an eBPF-based plugin, has the least overhead as eBPF combines both packet forwarding and filtering.  
 However, due to eBPF, additional hook points were attached to Cilium, incurring significant Netfilter overhead and increasing the overall CPU processing required.  
 Furthermore, despite the overhead of complex iptable chains and rules slowing down inter-host communication, the fine-grained control over the network may be of greater interest to the user.  
@@ -21,7 +21,7 @@ In summary, the selection of the CNI plugins largely depends on the interest of 
 
 \subsection{Paper 2}%
 \label{sub:Paper 2}
-The author advocated that the strongly consistent property of the etcd key-value store used by the current Kubernetes architecture has become a bottleneck in scaling the infrastructure horizontally and suggested the use of an eventually consistent architecture instead.  
+The author \cite{C2} advocated that the strongly consistent property of the etcd key-value store used by the current Kubernetes architecture has become a bottleneck in scaling the infrastructure horizontally and suggested the use of an eventually consistent architecture instead.  
 Using the official etcd benchmarking tool, the author benchmarked the impact of increasing the cluster node count on the performance of the put (write) and the linearizable range (read) requests from the etcd server.  
 As a result, the latency of write requests was severely impacted, increasing from 150ms to 280ms as the node count increased from 5 to 21, due to etcd's requirement to maintain strong consistency.  
 On the other hand, the latency of read requests remained relatively low.  
@@ -42,7 +42,7 @@ In summary, a decentralized and eventually consistent store designed for Kuberne
 
 \subsection{Paper 3}%
 \label{sub:Paper 3}
-Based on the study, k3s emerged as the most efficient lightweight Container Orchestration Distribution (COD) among the four alternatives.  
+Based on the study \cite{C3}, k3s emerged as the most efficient lightweight Container Orchestration Distribution (COD) among the four alternatives.  
 Interestingly, despite k3s showing the lowest latency and highest throughput at 64 pods, MicroShift and MicroK8s performed better when the deployment count was lower than 16.  
 This insight suggests that users should consider the scale of deployment as part of their selection process, as mentioned by the author.  
 Furthermore, the conclusion was made based on the assumption that memory is the most critical parameter in measuring the resource utilization score, as the study focuses on lightweight IoT applications where memory resources are scarce.  
