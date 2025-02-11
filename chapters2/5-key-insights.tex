@@ -1,0 +1,37 @@
+\section{Key Insights}%
+\label{sec:Key Insights}
+\subsection{Paper 1}%
+\label{sub:Paper 1}
+
+
+
+
+
+
+\subsection{Paper 2}%
+\label{sub:Paper 2}
+The author advocated the strongly consistent property of the etcd key-value store used by the current Kubernetes architecture has become the bottleneck in scaling the infrastructure horizontally and the use of an eventual consistent architecture instead.
+Using the official etcd benchmarking tool, the author benchmarked the impact of increasing the cluster node count against the performance of the put (write) and the linearisable range (read) request from the etcd server.
+As a result, the latency of the write request was severely impacted from 150ms grew to 280ms as the node counts increase from 5 to 21 due to the etcd must remain strongly consistent.
+On the other hand, the latency of the read latency remained relatively low.
+To overcome the bottleneck, the author suggested implementing an eventually consistent datastore instead via the conflict-free replicated datatypes (CRDTs).
+Unfortunately, the author did highlight if conflict did happen, the Kubernetes controllers will have to decide and perform the conflict merging.
+Nevertheless, a native horizontal autoscalar that optimizes the resources usage of the datastore may also be feasible via the transition towards an eventual consistent datastore.
+In summary, a decentralised and eventual consistent store designed for Kubernetes will mitigate the bottleneck.
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Paper 3}%
+\label{sub:Paper 3}
+
+
+
