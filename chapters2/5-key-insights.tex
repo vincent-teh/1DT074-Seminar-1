@@ -2,6 +2,17 @@
 \label{sec:Key Insights}
 \subsection{Paper 1}%
 \label{sub:Paper 1}
+The authors studied three key impacts of the type of CNI plugin used, including intra-host communication, inter-host communication, and pod launch time.  
+The study uses Linux \texttt{perf} to further break down the time consumed by each operation of the CNI plugins.  
+Netfilter, a framework inside the Linux kernel that allows kernel modules to register callback functions at distinct locations of the Linux network stack, accounts for the largest overhead in both intra-host and inter-host communication.  
+Hence, Cilium, an eBPF-based plugin, has the least overhead as eBPF combines both packet forwarding and filtering.  
+However, due to eBPF, additional hook points were attached to Cilium, incurring significant Netfilter overhead and increasing the overall CPU processing required.  
+Furthermore, despite the overhead of complex iptable chains and rules slowing down inter-host communication, the fine-grained control over the network may be of greater interest to the user.  
+Nevertheless, the selection of CNI plugins has minimal impact on the cold start time of the pod.  
+In summary, the selection of the CNI plugins largely depends on the interest of the application.
+
+
+
 
 
 
@@ -10,15 +21,14 @@
 
 \subsection{Paper 2}%
 \label{sub:Paper 2}
-The author advocated the strongly consistent property of the etcd key-value store used by the current Kubernetes architecture has become the bottleneck in scaling the infrastructure horizontally and the use of an eventual consistent architecture instead.
-Using the official etcd benchmarking tool, the author benchmarked the impact of increasing the cluster node count against the performance of the put (write) and the linearisable range (read) request from the etcd server.
-As a result, the latency of the write request was severely impacted from 150ms grew to 280ms as the node counts increase from 5 to 21 due to the etcd must remain strongly consistent.
-On the other hand, the latency of the read latency remained relatively low.
-To overcome the bottleneck, the author suggested implementing an eventually consistent datastore instead via the conflict-free replicated datatypes (CRDTs).
-Unfortunately, the author did highlight if conflict did happen, the Kubernetes controllers will have to decide and perform the conflict merging.
-Nevertheless, a native horizontal autoscalar that optimizes the resources usage of the datastore may also be feasible via the transition towards an eventual consistent datastore.
-In summary, a decentralized and eventual consistent store designed for Kubernetes will mitigate the bottleneck.
-
+The author advocated that the strongly consistent property of the etcd key-value store used by the current Kubernetes architecture has become a bottleneck in scaling the infrastructure horizontally and suggested the use of an eventually consistent architecture instead.  
+Using the official etcd benchmarking tool, the author benchmarked the impact of increasing the cluster node count on the performance of the put (write) and the linearizable range (read) requests from the etcd server.  
+As a result, the latency of write requests was severely impacted, increasing from 150ms to 280ms as the node count increased from 5 to 21, due to etcd's requirement to maintain strong consistency.  
+On the other hand, the latency of read requests remained relatively low.  
+To overcome the bottleneck, the author suggested implementing an eventually consistent datastore via conflict-free replicated datatypes (CRDTs).  
+Unfortunately, the author highlighted that if conflicts occur, the Kubernetes controllers will have to resolve them through conflict merging.  
+Nevertheless, a native horizontal autoscaler that optimizes the resource usage of the datastore may also be feasible through the transition to an eventually consistent datastore.  
+In summary, a decentralized and eventually consistent store designed for Kubernetes will mitigate the bottleneck.  
 
 
 
@@ -32,10 +42,9 @@ In summary, a decentralized and eventual consistent store designed for Kubernete
 
 \subsection{Paper 3}%
 \label{sub:Paper 3}
-Based on the study, k3s had emerged as the most efficient light-weight Container Orchestration Distribution (COD) among other 3 alternatives.
-Interestingly, despite k3s showed the lowest latency and highest throughput at 64 pods, Microshift and Microk8s had better performance when the deployment counts were lower than 16.
-This insight may suggest the user to consider the scale of the deployment as part of their selection process, as mentioned by the author.
-Further, the conclusion was made based on the assumption that the memory is the most paramount parameter in measuring the resource utilization score as the study focuses on light-weight IoT application where the memory resources are scarce.
-The author also emphasized the flexibility of the developed evaluation model by tuning the weight of the different parameters.
-The model combines resource utilization, control-plane deployment API and objects latency, allowing different study groups to emphasize certain property over another.
-
+Based on the study, k3s emerged as the most efficient lightweight Container Orchestration Distribution (COD) among the four alternatives.  
+Interestingly, despite k3s showing the lowest latency and highest throughput at 64 pods, MicroShift and MicroK8s performed better when the deployment count was lower than 16.  
+This insight suggests that users should consider the scale of deployment as part of their selection process, as mentioned by the author.  
+Furthermore, the conclusion was made based on the assumption that memory is the most critical parameter in measuring the resource utilization score, as the study focuses on lightweight IoT applications where memory resources are scarce.  
+The author also emphasized the flexibility of the developed evaluation model by allowing adjustments to the weight of different parameters.  
+The model integrates resource utilization, control-plane deployment API latency, and object latency, enabling different study groups to emphasize certain properties over others.  
