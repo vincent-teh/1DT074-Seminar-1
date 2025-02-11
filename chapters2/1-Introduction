@@ -1,0 +1,9 @@
+\section{Introduction}%
+\label{sec:Introduction}
+Topic C introduces the challenges and optimizations in containerized environments, focusing on Container Network Interface (CNI) plugins and Container Orchestration Distributions (CODs).
+With the increasing use of containerized applications, selecting the right CNI or COD is crucial for achieving optimal performance and scalability.
+
+The first paper \cite{C1} analyzes the performance of CNI plugins, comparing Flannel, Cilium, Calico, and Kube-router through both qualitative and quantitative analyses. 
+It evaluates factors such as networking architecture, overhead, and latency to determine their suitability for different use cases.
+The second paper \cite{C2} highlights Kubernetes' reliance on \textit{etcd} for cluster state management, identifying scalability issues in large clusters and proposing a method using Lazy syncing and Conflict-Free Replicated Datatypes (CRDTs) to enhance performance, particularly in edge environments.
+The third paper \cite{C3} provides a comparative analysis of four CODs—k0s, k3s, Microk8s, and Microshift—assessing their resource usage, control-plane performance, and data-plane efficiency to guide selection based on deployment needs.
