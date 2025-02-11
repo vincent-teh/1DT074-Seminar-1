@@ -1,2 +1,3 @@
 build/
 figures/*.pdf
+*.log
